@@ -72,6 +72,6 @@ func (awsS3 *AwsS3) GetPreSignedUrls(keys []string) []string {
 		}
 		urls = append(urls, urlStr)
 	}
-
+	log.Println(urls)
 	return urls
 }

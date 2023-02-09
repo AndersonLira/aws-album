@@ -1,0 +1,6 @@
+<span *ngIf="!selected">
+    <img  class="image" [src]="image" (click)="click()"/>
+</span>
+<span *ngIf="selected" class="container-selected" (click)="click()">
+    <img  class="image-selected" [src]="image" />
+</span>

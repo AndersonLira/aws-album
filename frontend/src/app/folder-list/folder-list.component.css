@@ -1,0 +1,8 @@
+.selected {
+    color: #ab3629;
+}
+.item {
+    display: flex;
+    flex-flow: row;
+    font-weight: 600;
+}

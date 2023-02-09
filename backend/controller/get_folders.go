@@ -11,6 +11,8 @@ import (
 type FolderHandler struct{}
 
 func (h *FolderHandler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
+	w.Header().Set("Access-Control-Allow-Origin", "*")
+	w.Header().Set("Content-Type", "application/json")
 	service := service.AwsS3{}
 	service.Init()
 	service.List()
@@ -21,6 +23,20 @@ func (h *FolderHandler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	json.NewEncoder(w).Encode(service.List())
 }
 
+type PreSignedUrlsHandler struct{}
+
+func (h *PreSignedUrlsHandler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
+	w.Header().Set("Access-Control-Allow-Origin", "*")
+	w.Header().Set("Content-Type", "application/json")
+	r.ParseForm()
+	values := r.Form["values"]
+
+	service := service.AwsS3{}
+	service.Init()
+	json.NewEncoder(w).Encode(service.GetPreSignedUrls(values))
+}
+
 func Register(mux *http.ServeMux) {
 	mux.Handle("/folders/", &FolderHandler{})
+	mux.Handle("/urls", &PreSignedUrlsHandler{})
 }
