@@ -1,1 +1,1 @@
-<span class="item" [class.selected]="item.selected" *ngFor="let item of items">{{ item.name }}</span>
+<input type="button" class="item" [class.selected]="item.selected" *ngFor="let item of items" [value]="item.name" (click)="click($event,item.name)"/>

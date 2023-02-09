@@ -1,11 +1,13 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FilesService } from '../files.service';
 
+
 @Component({
   selector: 'app-folder-list',
   templateUrl: './folder-list.component.html',
   styleUrls: ['./folder-list.component.css']
 })
+
 export class FolderListComponent implements OnInit{
   items: any
 
@@ -29,5 +31,10 @@ export class FolderListComponent implements OnInit{
       this.currentFiles.emit(currentFiles);
     })
   }
+
+  click(event:any,name:any) {
+    this.items = this.items.map((it:any) => { return {...it,selected: it.name == name}});
+  }
+
 
 }
