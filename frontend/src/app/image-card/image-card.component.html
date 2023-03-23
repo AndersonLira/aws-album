@@ -1,6 +1,10 @@
-<span *ngIf="!selected">
+<span *ngIf="!selected && isImage">
     <img  class="image" [src]="image" (click)="click()"/>
 </span>
-<span *ngIf="selected" class="container-selected" (click)="click()">
+<span *ngIf="selected && isImage" class="container-selected" (click)="click()">
     <img  class="image-selected" [src]="image" />
 </span>
+<video *ngIf="!isImage"  class="image"  controls>
+    <source [src]="image" type="video/mp4">
+    Your browser does not support the video tag.
+</video>

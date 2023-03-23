@@ -12,8 +12,6 @@ export class AppComponent {
   constructor(private readonly service: FilesService) {}
 
   currentFiles(event:any){
-    this.service.getUrls(event).subscribe((it : string[]) => {
-      this.images = it;
-    })
+    this.images = event;
   }
 }
