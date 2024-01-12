@@ -21,6 +21,7 @@ type AwsS3 struct {
 }
 
 func (awsS3 *AwsS3) Init() {
+	//set AWS_REGION as well
 	awsS3.albumBucket = os.Getenv(ALBUM_BUCKET)
 	if len(awsS3.albumBucket) == 0 {
 		errorMsg := fmt.Sprintf("%s env variable not declared", ALBUM_BUCKET)
